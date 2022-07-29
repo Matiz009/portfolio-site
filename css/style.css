@@ -86,3 +86,7 @@ strong {
     background: var(--clr-accent);
     font-family: var(--ff-secondary);
 }
+
+.bold {
+    font-weight: var(--fw-bold);
+}
