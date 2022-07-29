@@ -4,9 +4,12 @@
     box-sizing: border-box;
 }
 
+
+/* Custom Properties, update these for your own design */
+
 :root {
-    --ff-primary: "Source Sans Pro", sans-serif;
-    --ff-secondary: "Source Code Pro", monospace;
+    --ff-primary: 'Source Sans Pro', sans-serif;
+    --ff-secondary: 'Source Code Pro', monospace;
     --fw-reg: 300;
     --fw-bold: 900;
     --clr-light: #fff;
@@ -16,6 +19,7 @@
     --fs-h2: 2.25rem;
     --fs-h3: 1.25rem;
     --fs-body: 1rem;
+    --bs: 0.25em 0.25em 0.75em rgba(0, 0, 0, .25), 0.125em 0.125em 0.25em rgba(0, 0, 0, .15);
 }
 
 @media (min-width: 800px) {
@@ -27,6 +31,9 @@
     }
 }
 
+
+/* General styles */
+
 body {
     background: var(--clr-light);
     color: var(--clr-dark);
@@ -36,36 +43,43 @@ body {
     line-height: 1.6;
 }
 
+section {
+    padding: 5em 2em;
+}
+
 img {
     display: block;
     max-width: 100%;
 }
 
+strong {
+    font-weight: var(--fw-bold)
+}
+
+
+/* Typography */
+
 h1,
 h2,
 h3 {
-    line-height: 1.1;
+    line-height: 1;
     margin: 0;
 }
 
 h1 {
-    font-size: var(--fs-h1);
+    font-size: var(--fs-h1)
 }
 
 h2 {
-    font-size: var(--fs-h2);
+    font-size: var(--fs-h2)
 }
 
 h3 {
-    font-size: var(--fs-h3);
-}
-
-strong {
-    font-weight: var(--fw-bold);
+    font-size: var(--fs-h3)
 }
 
 .section__title {
-    margin-bottom: 0.25em;
+    margin-bottom: .25em;
 }
 
 .section__title--intro {
@@ -84,9 +98,55 @@ strong {
 .section__subtitle--intro,
 .section__subtitle--about {
     background: var(--clr-accent);
+    padding: .25em 1em;
     font-family: var(--ff-secondary);
+    margin-bottom: 1em;
 }
 
-.bold {
-    font-weight: var(--fw-bold);
+
+/* header */
+
+nav {
+    display: none;
+}
+
+
+/*  Intro section  */
+
+.intro {
+    position: relative;
+}
+
+.intro__img {
+    box-shadow: var(--bs);
+}
+
+.section__subtitle--intro {
+    display: inline-block;
+}
+
+@media (min-width: 600px) {
+    .intro {
+        display: grid;
+        width: min-content;
+        margin: 0 auto;
+        grid-column-gap: 1em;
+        grid-template-areas: "img title" "img subtitle";
+        grid-template-columns: min-content max-content;
+    }
+    .intro__img {
+        grid-area: img;
+        min-width: 250px;
+        position: relative;
+        z-index: 2;
+    }
+    .section__subtitle--intro {
+        align-self: start;
+        grid-column: -1 / 1;
+        grid-row: 2;
+        text-align: right;
+        position: relative;
+        left: -1.5em;
+        width: calc(100% + 1.5em);
+    }
 }
