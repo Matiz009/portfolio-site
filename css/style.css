@@ -57,6 +57,32 @@ strong {
     font-weight: var(--fw-bold)
 }
 
+:focus {
+    outline: 3px solid var(--clr-accent);
+    outline-offset: 3px;
+}
+
+
+/* Buttons */
+
+.btn {
+    display: inline-block;
+    padding: .5em 2.5em;
+    background: var(--clr-accent);
+    color: var(--clr-dark);
+    text-decoration: none;
+    cursor: pointer;
+    font-size: .8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: var(--fw-bold);
+    transition: transform 200ms ease-in-out;
+}
+
+.btn:hover {
+    transform: scale(1.1);
+}
+
 
 /* Typography */
 
@@ -77,10 +103,6 @@ h2 {
 
 h3 {
     font-size: var(--fs-h3)
-}
-
-.bold {
-    font-weight: var(--fw-bold);
 }
 
 .section__title {
@@ -157,41 +179,15 @@ nav {
 }
 
 
-/*For Button*/
-
-:focus {
-    outline: 3px solid var(--clr-accent);
-    outline-offset: 3px;
-}
-
-.btn {
-    display: inline-block;
-    padding: .5em 2.5em;
-    background: var(--clr-accent);
-    color: var(--clr-dark);
-    text-decoration: none;
-    cursor: pointer;
-    font-size: .8rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-weight: var(--fw-bold);
-    transition: transform 200ms ease-in-out;
-}
-
-.btn:hover {
-    transform: scale(1.8);
-}
-
-
-/*My Services Section*/
+/*  My services section  */
 
 .my-services {
     background-color: var(--clr-accent-light);
     background-image: url(../imgs/services-bg.jpg);
     background-size: cover;
     background-blend-mode: multiply;
-    text-align: center;
     color: var(--clr-light);
+    text-align: center;
 }
 
 .section__title--services {
@@ -202,11 +198,15 @@ nav {
 .section__title--services::after {
     content: '';
     display: block;
-    width: 3em;
+    width: 2em;
     height: 1px;
     margin: 0.5em auto 1em;
-    background: currentColor;
-    opacity: 0.75;
+    background: var(--clr-light);
+    opacity: 0.25;
+}
+
+.services {
+    margin-bottom: 4em;
 }
 
 .service {
@@ -226,6 +226,37 @@ nav {
     }
 }
 
-.services {
-    margin-bottom: 4em;
+.about-me {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.about-me__img {
+    box-shadow: var(--bs);
+}
+
+@media (min-width: 600px) {
+    .about-me {
+        display: grid;
+        grid-template-columns: 1fr 200px;
+        grid-template-areas: "title img" "subtitle img" "text img";
+        grid-column-gap: 2em;
+    }
+    .section__title--about {
+        grid-area: title;
+    }
+    .section__subtitle--about {
+        grid-column: 1 / -1;
+        grid-row: 2;
+        position: relative;
+        left: -1em;
+        width: calc(100% + 2em);
+        padding-left: 1em;
+        padding-right: calc(200px + 4em);
+    }
+    .about-me__img {
+        grid-area: img;
+        position: relative;
+        z-index: 2;
+    }
 }
